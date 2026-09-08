@@ -3,81 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alex Rivera — Maker &amp; Developer</title>
-<meta name="description" content="Personal site of Alex Rivera, developer and maker of small useful things.">
+<title>Marquee — search and watch</title>
+<meta name="description" content="Search YouTube and watch videos inline.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="topbar">
-    <a href="#top" class="wordmark">Alex Rivera</a>
-    <nav class="topnav">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="youtube-search.html">Search</a>
-</nav>
-    </nav>
+    <a href="#top" class="wordmark">Marquee</a>
   </header>
 
   <main id="top">
     <section class="hero">
-      <p class="hero-kicker">Developer, based in Chicago</p>
-      <h1 class="hero-title">I build small tools<br>that quietly do their job well.</h1>
-      <p class="hero-sub">Ten years writing software for newsrooms, nonprofits, and the occasional weekend project that got out of hand.</p>
+      <h1 class="hero-title">Search. Press play.<br>Watch it here.</h1>
+
+      <form class="search-form" id="yt-form">
+        <label for="yt-query" class="sr-only">Search videos</label>
+        <input
+          type="text"
+          id="yt-query"
+          class="search-input"
+          placeholder="Search for a video…"
+          autocomplete="off"
+          required
+        >
+        <button type="submit" class="search-btn">Search</button>
+      </form>
     </section>
 
-    <section id="work" class="work">
-      <h2 class="section-title">Selected work</h2>
-
-      <ul class="work-list">
-        <li class="work-item">
-          <div class="work-year">2025</div>
-          <div class="work-body">
-            <h3>Fieldnote</h3>
-            <p>A note-taking app for reporters working offline, with location tags and voice transcription.</p>
-            <a href="#" class="work-link">View project</a>
-          </div>
-        </li>
-        <li class="work-item">
-          <div class="work-year">2024</div>
-          <div class="work-body">
-            <h3>Civic Ledger</h3>
-            <p>Open budget-tracking dashboard used by three city councils to publish spending data.</p>
-            <a href="#" class="work-link">View project</a>
-          </div>
-        </li>
-        <li class="work-item">
-          <div class="work-year">2023</div>
-          <div class="work-body">
-            <h3>Paper Trail</h3>
-            <p>A small script that turns a folder of receipts into a reconciled spreadsheet. Still my most-used tool.</p>
-            <a href="#" class="work-link">View project</a>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section id="about" class="about">
-      <h2 class="section-title">About</h2>
-      <div class="about-body">
-        <p>I'm a developer who likes projects with a clear, narrow job. Most of what I build starts as something I needed myself: a way to track expenses, a faster way to search old notes, a script that saved me an afternoon.</p>
-        <p>Before this I spent six years building internal tools at a local newsroom, which is where I learned that the best software is the kind nobody has to think about.</p>
+    <section class="screen-section">
+      <div class="screen" id="screen">
+        <div class="screen-placeholder" id="screen-placeholder">
+          <p>Nothing playing yet — search above, then pick a video.</p>
+        </div>
+        <div class="player-wrap" id="player-wrap">
+          <iframe
+            id="player"
+            src=""
+            title="Video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
+      <p class="now-playing" id="now-playing"></p>
     </section>
 
-    <section id="contact" class="contact">
-      <h2 class="section-title">Get in touch</h2>
-      <p class="contact-body">Happy to talk about a project, a job, or a tool you wish existed.</p>
-      <a href="mailto:hello@example.com" class="contact-email">hello@example.com</a>
+    <section class="results-section">
+      <p class="status" id="status"></p>
+      <ul class="results" id="results"></ul>
     </section>
   </main>
 
   <footer class="footer">
-    <p>&copy; <span id="year"></span> Alex Rivera</p>
+    <p>Built with the YouTube Data API. Not affiliated with YouTube or Google.</p>
   </footer>
 
 <script src="script.js"></script>
