@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Search</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .yt-wrap { max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+  .yt-search-form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .yt-search-input {
+    flex: 1;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .yt-search-input:focus-visible {
+    outline: 2px solid var(--moss);
+    outline-offset: 1px;
+  }
+
+  .yt-search-btn {
+    padding: 0.65rem 1.25rem;
+    border: none;
+    border-radius: 4px;
+    background: var(--moss);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .yt-search-btn:hover { background: #3d5643; }
+
+  .yt-player-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    margin-bottom: 2rem;
+    display: none;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .yt-player-wrap.active { display: block; }
+
+  .yt-player-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .yt-results {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .yt-result {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+    cursor: pointer;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    width: 100%;
+    text-align: left;
+    font-family: var(--sans);
+  }
+
+  .yt-result:first-child { border-top: none; }
+
+  .yt-result img {
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .yt-result-title {
+    margin: 0 0 0.3rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .yt-result-channel {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .yt-status {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    .yt-result { grid-template-columns: 100px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="index.html" class="wordmark">Alex Rivera</a>
+  </header>
+
+  <main class="yt-wrap">
+    <h1 class="section-title">Search YouTube</h1>
+
+    <form class="yt-search-form" id="yt-form">
+      <label for="yt-query" class="sr-only">Search videos</label>
+      <input
+        type="text"
+        id="yt-query"
+        class="yt-search-input"
+        placeholder="Search for a video…"
+        autocomplete="off"
+        required
+      >
+      <button type="submit" class="yt-search-btn">Search</button>
+    </form>
+
+    <div class="yt-player-wrap" id="yt-player-wrap">
+      <iframe
+        id="yt-player"
+        src=""
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <p class="yt-status" id="yt-status"></p>
+    <ul class="yt-results" id="yt-results"></ul>
+  </main>
+
+<script src="youtube-search.js"></script>
+</body>
+</html>
