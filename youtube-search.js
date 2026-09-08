@@ -1,6 +1,6 @@
 // Replace with your own API key, restricted to your GitHub Pages domain
 // (Google Cloud Console → Credentials → API key → HTTP referrer restrictions).
-const YOUTUBE_API_KEY = 'YOUR_API_KEY_HERE';
+const YOUTUBE_API_KEY = 'AIzaSyDKplaEm3XmZ20f_XCiVuX9khL3dHNcB6E';
 
 const form = document.getElementById('yt-form');
 const input = document.getElementById('yt-query');
